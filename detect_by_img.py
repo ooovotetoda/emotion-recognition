@@ -3,10 +3,8 @@ import numpy as np
 import tensorflow as tf
 from tensorflow import keras
 
-# Загрузите предварительно обученную модель
 model = keras.models.load_model('model_v6_23.hdf5')
 
-# Список эмоций, которые может определить ваша модель
 EMOTIONS = ["angry", "disgust", "scared", "happy", "sad", "surprised", "neutral"]
 
 def detect_emotion(face_img):
@@ -18,7 +16,6 @@ def detect_emotion(face_img):
     predictions = model.predict(face_img)
     return EMOTIONS[np.argmax(predictions)]
 
-# Загрузка статичного изображения
 frame = cv2.imread('images/sad2.jpg')
 
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
